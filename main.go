@@ -47,6 +47,7 @@ var (
 	routesEnabled               = flag.Bool("routes.enabled", true, "Scrape routing table metrics")
 	environmentEnabled          = flag.Bool("environment.enabled", true, "Scrape environment metrics")
 	firewallEnabled             = flag.Bool("firewall.enabled", true, "Scrape Firewall count metrics")
+	policerEnabled              = flag.Bool("policer.enabled", true, "Scrape Policer count metrics")
 	interfacesEnabled           = flag.Bool("interfaces.enabled", true, "Scrape interface metrics")
 	interfaceDiagnosticsEnabled = flag.Bool("ifdiag.enabled", true, "Scrape optical interface diagnostic metrics")
 	ipsecEnabled                = flag.Bool("ipsec.enabled", false, "Scrape IPSec metrics")
@@ -187,6 +188,7 @@ func loadConfigFromFlags() *config.Config {
 	f.BGP = *bgpEnabled
 	f.Environment = *environmentEnabled
 	f.Firewall = *firewallEnabled
+	f.Policer = *policerEnabled
 	f.Interfaces = *interfacesEnabled
 	f.InterfaceDiagnostic = *interfaceDiagnosticsEnabled
 	f.InterfaceQueue = *interfaceQueuesEnabled

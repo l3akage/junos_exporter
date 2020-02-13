@@ -38,6 +38,7 @@ type FeatureConfig struct {
 	Routes              bool `yaml:"routes,omitempty"`
 	RoutingEngine       bool `yaml:"routing_engine,omitempty"`
 	Firewall            bool `yaml:"firewall,omitempty"`
+	Policer             bool `yaml:"policer,omitempty"`
 	Interfaces          bool `yaml:"interfaces,omitempty"`
 	InterfaceDiagnostic bool `yaml:"interface_diagnostic,omitempty"`
 	InterfaceQueue      bool `yaml:"interface_queue,omitempty"`
@@ -92,6 +93,7 @@ func setDefaultValues(c *Config) {
 	f.LDP = true
 	f.Routes = true
 	f.Firewall = true
+	f.Policer = true
 	f.RoutingEngine = true
 	f.Storage = true
 	f.Accounting = false

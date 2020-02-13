@@ -20,6 +20,7 @@ import (
 	"github.com/czerwonk/junos_exporter/ldp"
 	"github.com/czerwonk/junos_exporter/nat"
 	"github.com/czerwonk/junos_exporter/ospf"
+	"github.com/czerwonk/junos_exporter/policer"
 	"github.com/czerwonk/junos_exporter/route"
 	"github.com/czerwonk/junos_exporter/routingengine"
 	"github.com/czerwonk/junos_exporter/rpki"
@@ -65,6 +66,7 @@ func (c *collectors) initCollectorsForDevices(device *connector.Device) {
 	})
 	c.addCollectorIfEnabledForDevice(device, "env", f.Environment, environment.NewCollector)
 	c.addCollectorIfEnabledForDevice(device, "firewall", f.Firewall, firewall.NewCollector)
+	c.addCollectorIfEnabledForDevice(device, "policer", f.Policer, policer.NewCollector)
 	c.addCollectorIfEnabledForDevice(device, "fpc", f.FPC, fpc.NewCollector)
 	c.addCollectorIfEnabledForDevice(device, "ifacediag", f.InterfaceDiagnostic, func() collector.RPCCollector {
 		return interfacediagnostics.NewCollector(c.dynamicLabels)
