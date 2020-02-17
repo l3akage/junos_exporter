@@ -56,6 +56,7 @@ func (c *collectors) initCollectorsForDevices(device *connector.Device) {
 
 	c.devices[device.Host] = make([]collector.RPCCollector, 0)
 
+	c.addCollectorIfEnabledForDevice(device, "routingengine", f.RoutingEngine, routingengine.NewCollector)
 	c.addCollectorIfEnabledForDevice(device, "accounting", f.Accounting, accounting.NewCollector)
 	c.addCollectorIfEnabledForDevice(device, "alarm", f.Alarm, func() collector.RPCCollector {
 		return alarm.NewCollector(*alarmFilter)
@@ -84,7 +85,6 @@ func (c *collectors) initCollectorsForDevices(device *connector.Device) {
 		return ospf.NewCollector(c.logicalSystem)
 	})
 	c.addCollectorIfEnabledForDevice(device, "routes", f.Routes, route.NewCollector)
-	c.addCollectorIfEnabledForDevice(device, "routingengine", f.RoutingEngine, routingengine.NewCollector)
 	c.addCollectorIfEnabledForDevice(device, "rpki", f.RPKI, rpki.NewCollector)
 	c.addCollectorIfEnabledForDevice(device, "storage", f.Storage, storage.NewCollector)
 	c.addCollectorIfEnabledForDevice(device, "system", f.System, system.NewCollector)
